@@ -7,7 +7,7 @@
 // @require        http://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js
 // @require        http://github.com/cowboy/jquery-hashchange/raw/v1.3/jquery.ba-hashchange.min.js
 // @require        http://github.com/cowboy/jquery-bbq/raw/v1.2.1/jquery.ba-bbq.min.js
-// @require        https://raw.github.com/okbreathe/jquery_plugins/master/okShortcut/jquery.okShortcut.min.js
+// @require        https://raw.github.com/jeresig/jquery.hotkeys/master/jquery.hotkeys.js
 // @require        https://raw.github.com/litera/jquery-scrollintoview/master/jquery.scrollintoview.min.js
 // ==/UserScript==
 
@@ -30,26 +30,21 @@ quickflix.ui = quickflix.ui || {};
 			.addRule(".agMovie.quickflix-selected", "border: 4px green solid;");
 	},
 	init_shortcuts = function() {
-		$.shortcut.add('down', function() {
+		$(document.bind('keypress', 'down', function() {
 			ui.selected_movie(selected_movie + 1);
-		});
-		$.shortcut.add('up', function() {
+		}).bind('keypress', 'up', function() {
 			ui.selected_movie(selected_movie - 1);
-		});
-		$.shortcut.add('left', function() {
+		}).bind('keypress', 'left', function() {
 			$('.pagination a.prev').each(function() {
 				window.location = $(this).attr('href');
 			});
-		});
-		$.shortcut.add('right', function() {
+		}).bind('keypress', 'right', function() {
 			$('.pagination a.next').each(function() {
 				window.location = $(this).attr('href');
 			});
-		});
-		$.shortcut.add('enter', function() {
+		}).bind('keypress', 'return', function() {
 			ui.view_movie_details(ui.selected_movie()) || ui.play_movie(ui.selected_movie());
-		});
-		$.shortcut.add('shift+enter', function() {
+		}).bind('keypress', 'shift+return', function() {
 			ui.play_movie(ui.selected_movie()) || ui.view_movie_details(ui.selected_movie());
 		});
 	};
