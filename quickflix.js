@@ -1,21 +1,8 @@
-// ==UserScript==
-// @name           QuickFlix
-// @description    A brief description of your script
-// @author         Brian Hazzard
-// @include        http://movies.netflix.com/*
-// @version        1.0
-// @require        http://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js
-// @require        http://github.com/cowboy/jquery-hashchange/raw/v1.3/jquery.ba-hashchange.min.js
-// @require        http://github.com/cowboy/jquery-bbq/raw/v1.2.1/jquery.ba-bbq.min.js
-// @require        https://raw.github.com/jeresig/jquery.hotkeys/master/jquery.hotkeys.js
-// @require        https://raw.github.com/litera/jquery-scrollintoview/master/jquery.scrollintoview.min.js
-// ==/UserScript==
-
 // define or extend quickflix
 var quickflix = quickflix || {};
 (function(qf) {
 	qf.play_first_movie = function() {
-		qf.play_movie($('a.btn-play:first'));
+		qf.ui.play_movie(qf.ui.streamable_movies().first());
 	};
 })(quickflix);
 
@@ -27,24 +14,24 @@ quickflix.ui = quickflix.ui || {};
 	var selected_movie = 0,
 	init_styles = function() {
 		document.styleSheets[0]
-			.addRule(".agMovie.quickflix-selected", "border: 4px green solid;");
+			.addRule(".quickflix-selected", "border: 4px green solid;");
 	},
 	init_shortcuts = function() {
-		$(document.bind('keypress', 'down', function() {
+		$(document).bind('keydown', 'down', function() {
 			ui.selected_movie(selected_movie + 1);
-		}).bind('keypress', 'up', function() {
+		}).bind('keydown', 'up', function() {
 			ui.selected_movie(selected_movie - 1);
-		}).bind('keypress', 'left', function() {
+		}).bind('keydown', 'left', function() {
 			$('.pagination a.prev').each(function() {
 				window.location = $(this).attr('href');
 			});
-		}).bind('keypress', 'right', function() {
+		}).bind('keydown', 'right', function() {
 			$('.pagination a.next').each(function() {
 				window.location = $(this).attr('href');
 			});
-		}).bind('keypress', 'return', function() {
+		}).bind('keydown', 'return', function() {
 			ui.view_movie_details(ui.selected_movie()) || ui.play_movie(ui.selected_movie());
-		}).bind('keypress', 'shift+return', function() {
+		}).bind('keydown', 'shift+return', function() {
 			ui.play_movie(ui.selected_movie()) || ui.view_movie_details(ui.selected_movie());
 		});
 	};

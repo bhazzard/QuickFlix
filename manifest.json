@@ -9,5 +9,18 @@
   },
   "permissions": [
     "http://movies.netflix.com/"
+  ],
+  "content_scripts": [
+    {
+     "matches": ["*://*.netflix.com/*"],
+     "js": [
+       "lib/jquery.min.js",
+       "lib/jquery.scrollintoview.min.js",
+       "lib/jquery.hotkeys.js",
+       "lib/jquery.ba-bbq.min.js",
+       "lib/jquery.ba-hashchange.min.js",
+       "quickflix.js"
+     ]
+    }
   ]
 }
