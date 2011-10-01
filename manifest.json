@@ -1,0 +1,13 @@
+{
+  "name": "QuickFlix",
+  "version": "1.0",
+  "description": "Add arrow-key movie traversal to Netflix",
+  "icons": {
+    "16": "images/icons/image16.png",
+    "48": "images/icons/image48.png",
+    "128": "images/icons/image128.png"
+  },
+  "permissions": [
+    "http://movies.netflix.com/"
+  ]
+}
