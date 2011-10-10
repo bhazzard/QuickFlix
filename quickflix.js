@@ -20,16 +20,18 @@ quickflix.ui = quickflix.ui || {};
                 },
                 up = function() {
                     ui.selected_movie(selected_movie - 1);
+                },
+                left = function() {
+                    $('.pagination a.prev').each(function() {
+                        window.location = $(this).attr('href');
+                    });
+                },
+                right = function() {
+                    $('.pagination a.next').each(function() {
+                        window.location = $(this).attr('href');
+                    });
                 };
-            $(document).bind('keydown', 'down', down).bind('keydown', 'j', down).bind('keydown', 'up', up).bind('keydown', 'k', up).bind('keydown', 'left', function() {
-                $('.pagination a.prev').each(function() {
-                    window.location = $(this).attr('href');
-                });
-            }).bind('keydown', 'right', function() {
-                $('.pagination a.next').each(function() {
-                    window.location = $(this).attr('href');
-                });
-            }).bind('keydown', 'return', function() {
+            $(document).bind('keydown', 'down', down).bind('keydown', 'j', down).bind('keydown', 'up', up).bind('keydown', 'k', up).bind('keydown', 'left', left).bind('keydown', 'h', left).bind('keydown', 'l', right).bind('keydown', 'right', right).bind('keydown', 'return', function() {
                 ui.view_movie_details(ui.selected_movie()) || ui.play_movie(ui.selected_movie());
             }).bind('keydown', 'shift+return', function() {
                 ui.play_movie(ui.selected_movie()) || ui.view_movie_details(ui.selected_movie());
