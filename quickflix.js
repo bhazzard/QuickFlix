@@ -30,12 +30,15 @@ quickflix.ui = quickflix.ui || {};
                     $('.pagination a.next').each(function() {
                         window.location = $(this).attr('href');
                     });
-                };
+                },
+				search = function() {
+					$('#searchField').focus();
+				};
             $(document).bind('keydown', 'down', down).bind('keydown', 'j', down).bind('keydown', 'up', up).bind('keydown', 'k', up).bind('keydown', 'left', left).bind('keydown', 'h', left).bind('keydown', 'l', right).bind('keydown', 'right', right).bind('keydown', 'return', function() {
                 ui.view_movie_details(ui.selected_movie()) || ui.play_movie(ui.selected_movie());
             }).bind('keydown', 'shift+return', function() {
                 ui.play_movie(ui.selected_movie()) || ui.view_movie_details(ui.selected_movie());
-            });
+            }).bind('keyup', '/', search);
         };
     // public members
     ui.init = function() {
