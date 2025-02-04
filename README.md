@@ -1,3 +1,7 @@
+> [!NOTE]
+> This was a "scratch your own itch" project from the days when there was no such thing as a dedicated streaming device, and Netflix ran in your browser.
+> It was a mouseless way to navigate Netflix's web app. It was pretty awesome for the time. Of course now it is only presevered for history's sake.
+
 Have you ever used Netflix on your computer in bed, or on your couch? Do you hate constantly reaching for the mouse?
 
 QuickFlix is a simple extension designed to make Netflix better in bed. You can flip through the results on a search page simply using your arrow keys. When you find something you want to watch, you can just press enter for more information, or shift+enter to start watching instantly.
